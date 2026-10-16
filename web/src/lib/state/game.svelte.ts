@@ -289,10 +289,15 @@ export class GameStore {
     const res = await engine.apply(move);
     this.lastEvents = res.events;
     if (move.type === 'play') this.shownTrick = null;
+    let dealOver = false;
     for (const ev of res.events) {
-      if (ev.type === 'deal_over') this.lastDealResult = ev.result;
+      if (ev.type === 'deal_over') {
+        this.lastDealResult = ev.result;
+        dealOver = true;
+      }
       if (ev.type === 'trick') this.shownTrick = ev.trick;
     }
+    if (dealOver) void this.fetchPar();
     this.view = res.view;
     this.record = await engine.record();
     saveJson(LS_RECORD, this.record);

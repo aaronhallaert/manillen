@@ -1,6 +1,17 @@
 <script lang="ts">
   import Card from './Card.svelte';
-  import { bidLabel, cardLabel, compareCards, otherPlayer, type Card as CardT, type PlayerView, type TableSlot, type Trick } from '../engine/types';
+  import {
+    bidLabel,
+    cardLabel,
+    compareCards,
+    otherPlayer,
+    sameBid,
+    type Card as CardT,
+    type ParReport,
+    type PlayerView,
+    type TableSlot,
+    type Trick,
+  } from '../engine/types';
 
   interface Props {
     view: PlayerView;
@@ -10,10 +21,39 @@
     readonly?: boolean;
     /** A just-completed trick to keep on the table until the next lead. */
     completedTrick?: Trick | null;
+    /** Hindsight par of the deal; shown as one line when provided. */
+    par?: ParReport | null;
+    parPending?: boolean;
     onplay?: (card: CardT) => void;
   }
 
-  let { view, scores = [0, 0], target = 101, aiThinking = false, readonly = false, completedTrick = null, onplay }: Props = $props();
+  let {
+    view,
+    scores = [0, 0],
+    target = 101,
+    aiThinking = false,
+    readonly = false,
+    completedTrick = null,
+    par = null,
+    parPending = false,
+    onplay,
+  }: Props = $props();
+
+  const parLine = $derived.by(() => {
+    if (!par) return null;
+    const iAmDealer = par.dealer === view.me;
+    const sign = (n: number) => (n > 0 ? `+${n}` : `${n}`);
+    if (view.bid) {
+      const row = par.actual ?? par.bids.find((b) => sameBid(b.bid, view.bid)) ?? null;
+      if (!row) return null;
+      const my = iAmDealer ? row.dealer_score : -row.dealer_score;
+      return `Par: ${sign(my)} for you on ${bidLabel(row.bid)} · perfect play gives you ${row.points[view.me]} pts`;
+    }
+    const best = par.bids.find((b) => sameBid(b.bid, par.best_bid)) ?? null;
+    const my = iAmDealer ? par.par_score : -par.par_score;
+    const who = iAmDealer ? 'your' : "dealer's";
+    return `Par: ${who} best bid ${bidLabel(par.best_bid)} for ${sign(my)} · perfect play gives you ${best ? best.points[view.me] : '?'} pts`;
+  });
 
   const me = $derived(view.me);
   const opp = $derived(otherPlayer(view.me));

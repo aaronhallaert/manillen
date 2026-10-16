@@ -53,6 +53,8 @@
       target={game.matchState?.target ?? game.settings.target}
       aiThinking={game.aiThinking}
       completedTrick={game.shownTrick}
+      par={game.settings.show_par ? game.par : null}
+      parPending={game.settings.show_par && game.parPending}
       onplay={playCard}
     />
     {#if showBid}

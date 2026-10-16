@@ -1,15 +1,18 @@
 <script lang="ts">
   import Table from './Table.svelte';
+  import ParTable from './ParTable.svelte';
   import {
     compareCards,
     moveLabel,
     parseCard,
     sameMove,
     type AnalysisReport,
+    type Bid,
     type Card,
     type Decision,
     type GameRecord,
     type Label,
+    type ParReport,
     type PlayerView,
     type Suit,
   } from '../engine/types';
