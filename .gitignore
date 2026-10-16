@@ -1,0 +1,5 @@
+/target
+/crates/manillen-wasm/pkg
+/web/node_modules
+/web/dist
+/web/dev-dist

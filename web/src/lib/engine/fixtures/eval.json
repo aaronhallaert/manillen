@@ -1,0 +1,7 @@
+{ "player": 0, "unit": "points", "samples": 20, "nodes": 1532000,
+  "options": [
+    {"move": {"type": "play", "card": "10C"}, "value": 33.4},
+    {"move": {"type": "play", "card": "7D"},  "value": 32.9},
+    {"move": {"type": "play", "card": "AD"},  "value": 29.1},
+    {"move": {"type": "play", "card": "QS"},  "value": 27.0}
+  ] }

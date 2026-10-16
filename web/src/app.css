@@ -1,0 +1,234 @@
+:root {
+  color-scheme: light dark;
+  --felt: #2a6b44;
+  --felt-dark: #1b4a30;
+  --bg: #f4f1ea;
+  --fg: #1c1c1c;
+  --muted: #6b6b6b;
+  --panel: #ffffff;
+  --line: #d9d4c7;
+  --accent: #e8b640;
+  --accent-strong: #d4782a;
+  --accent-fg: #1c1c1c;
+  --card-bg: #fffdf7;
+  --card-fg: #1c1c1c;
+  --card-red: #c8102e;
+  --card-border: #c9c3b4;
+  --card-back-a: #2b4f8a;
+  --card-back-b: #1d386a;
+  --c-best: #2e8b57;
+  --c-good: #4f9ad6;
+  --c-inaccuracy: #e8b640;
+  --c-mistake: #e07a1f;
+  --c-blunder: #c8102e;
+  --card-w: 56px;
+  --card-w-small: 42px;
+
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121412;
+    --fg: #ececec;
+    --muted: #a0a4a0;
+    --panel: #1f231f;
+    --line: #343a34;
+    --felt: #173f2a;
+    --felt-dark: #10301f;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100%;
+  overscroll-behavior: none;
+}
+
+#app {
+  min-height: 100dvh;
+}
+
+/* Anything drawn on green felt uses light text. `--fg` must follow, since buttons,
+   dialogs and hints read it. */
+main.felt,
+.on-felt {
+  color: #f4f1ea;
+  --fg: #f4f1ea;
+  --muted: #cfd8cf;
+  --panel: #10301f;
+  --line: #2b5a40;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+.panel {
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0 0 8px;
+}
+
+.btn {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--fg);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn.primary {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+.btn.small {
+  min-height: 36px;
+  padding: 0 12px;
+  font-size: 0.85rem;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.actions .btn {
+  flex: 1 1 auto;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 10;
+  padding: 12px;
+}
+/* Decisions made while looking at the table (bid, contra): an inline banner that sits
+   under the hand and sticks to the bottom of the viewport. Nothing is covered. */
+.banner {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+}
+.banner .dialog {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+}
+.banner .dialog h2 {
+  font-size: 1rem;
+  margin: 0 0 2px;
+}
+.banner .dialog .sub {
+  font-size: 0.8rem;
+  margin: 0 0 8px;
+}
+
+/* Non-blocking variant for decisions made while looking at the table (bid, contra):
+   no dimming, panel floats over the empty centre, the table stays visible and readable. */
+.overlay.compact {
+  background: transparent;
+  pointer-events: none;
+  align-items: center;
+}
+.overlay.compact .dialog {
+  pointer-events: auto;
+  max-width: 360px;
+  padding: 10px 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.overlay.compact .dialog h2 {
+  font-size: 1rem;
+  margin: 0 0 4px;
+}
+.overlay.compact .dialog .sub {
+  font-size: 0.8rem;
+  margin: 0 0 8px;
+}
+/* Modal dialogs keep their own light/dark palette, independent of the felt
+   screen behind them (which switches `--fg` to light text). */
+.dialog {
+  width: 100%;
+  max-width: 440px;
+  background: #f4f1ea;
+  color: #1c1c1c;
+  --fg: #1c1c1c;
+  --muted: #6b6b6b;
+  --line: #d9d4c7;
+  --panel: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (prefers-color-scheme: dark) {
+  .dialog {
+    background: #1f231f;
+    color: #ececec;
+    --fg: #ececec;
+    --muted: #a0a4a0;
+    --line: #343a34;
+    --panel: #2a302a;
+  }
+}
+/* Banners sit on the felt panel colour: light text. */
+.banner .dialog,
+.overlay.compact .dialog {
+  color: #f4f1ea;
+  --fg: #f4f1ea;
+  --muted: #cfd8cf;
+  --line: #2b5a40;
+}
+.dialog h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+@media (min-width: 600px) {
+  .overlay {
+    align-items: center;
+  }
+}

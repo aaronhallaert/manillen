@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "dealer": 1,
+  "layout": {
+    "hands": [
+      ["7C", "KC", "10C", "8D", "AD", "JH", "QH", "9S"],
+      ["QC", "9D", "KD", "7H", "AH", "10H", "JS", "KS"]
+    ],
+    "table": [
+      [ {"top": "7D", "under": "9C"}, {"top": "QS", "under": "AS"}, {"top": "8H", "under": "10D"}, {"top": "JC", "under": "KH"} ],
+      [ {"top": "8C", "under": "AC"}, {"top": "JD", "under": "QD"}, {"top": "9H", "under": "7S"}, {"top": "8S", "under": "10S"} ]
+    ]
+  },
+  "moves": [
+    {"type": "bid", "bid": {"type": "trump", "suit": "H"}},
+    {"type": "contra", "contra": false},
+    {"type": "play", "card": "9S"},
+    {"type": "play", "card": "JS"},
+    {"type": "play", "card": "8C"},
+    {"type": "play", "card": "JC"}
+  ]
+}

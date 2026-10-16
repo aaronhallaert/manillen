@@ -1,0 +1,23 @@
+{
+  "player": 0,
+  "decisions": [
+    { "index": 1, "trick": -1, "phase": "contra",
+      "chosen": {"type": "contra", "contra": false}, "best": {"type": "contra", "contra": false},
+      "options": [ {"move": {"type": "contra", "contra": false}, "value": -3.2}, {"move": {"type": "contra", "contra": true}, "value": -6.4} ],
+      "value_chosen": -3.2, "value_best": -3.2, "loss": 0.0, "label": "best", "unit": "score", "note": null },
+    { "index": 2, "trick": 0, "phase": "play",
+      "chosen": {"type": "play", "card": "9S"}, "best": {"type": "play", "card": "7D"},
+      "options": [
+        {"move": {"type": "play", "card": "7D"}, "value": 31.0}, {"move": {"type": "play", "card": "9S"}, "value": 28.5},
+        {"move": {"type": "play", "card": "10C"}, "value": 27.9}, {"move": {"type": "play", "card": "AD"}, "value": 24.0}
+      ],
+      "value_chosen": 28.5, "value_best": 31.0, "loss": 2.5, "label": "inaccuracy", "unit": "points",
+      "note": "Leading a low table card frees your hidden card early." },
+    { "index": 5, "trick": 1, "phase": "play",
+      "chosen": {"type": "play", "card": "JC"}, "best": {"type": "play", "card": "JC"},
+      "options": [ {"move": {"type": "play", "card": "JC"}, "value": 29.0}, {"move": {"type": "play", "card": "KC"}, "value": 27.5}, {"move": {"type": "play", "card": "10C"}, "value": 25.0} ],
+      "value_chosen": 29.0, "value_best": 29.0, "loss": 0.0, "label": "best", "unit": "points", "note": null }
+  ],
+  "timeline": [ {"index": 1, "value": 30.0}, {"index": 2, "value": 28.5}, {"index": 5, "value": 29.0} ],
+  "summary": { "best": 2, "good": 0, "inaccuracy": 1, "mistake": 0, "blunder": 0, "avg_loss": 0.83 }
+}

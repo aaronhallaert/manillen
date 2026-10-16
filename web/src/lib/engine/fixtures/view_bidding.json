@@ -1,0 +1,20 @@
+{
+  "me": 0, "dealer": 0, "phase": "bidding", "to_move": 0,
+  "bid": null, "contra": false, "multiplier": 1,
+  "hand": ["7C", "KC", "10C", "8D", "AD", "JH", "QH", "9S"],
+  "opp_hand_count": 8,
+  "table": [
+    [ {"top": "7D", "covered": true}, {"top": "QS", "covered": true}, {"top": "8H", "covered": true}, {"top": "JC", "covered": true} ],
+    [ {"top": "8C", "covered": true}, {"top": "JD", "covered": true}, {"top": "9H", "covered": true}, {"top": "8S", "covered": true} ]
+  ],
+  "current_trick": null, "last_trick": null, "tricks_played": 0,
+  "points": [0, 0], "played": [],
+  "unknown": ["QC", "9D", "KD", "7H", "AH", "10H", "JS", "KS", "9C", "AS", "10D", "KH", "AC", "QD", "7S", "10S"],
+  "legal_moves": [
+    {"type": "bid", "bid": {"type": "trump", "suit": "C"}},
+    {"type": "bid", "bid": {"type": "trump", "suit": "D"}},
+    {"type": "bid", "bid": {"type": "trump", "suit": "H"}},
+    {"type": "bid", "bid": {"type": "trump", "suit": "S"}},
+    {"type": "bid", "bid": {"type": "no_trump"}}
+  ]
+}

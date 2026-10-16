@@ -1,0 +1,22 @@
+{
+  "me": 0, "dealer": 1, "phase": "play", "to_move": 0,
+  "bid": {"type": "trump", "suit": "H"}, "contra": false, "multiplier": 1,
+  "hand": ["7C", "KC", "10C", "8D", "AD", "JH", "QH"],
+  "opp_hand_count": 7,
+  "table": [
+    [ {"top": "7D", "covered": true}, {"top": "QS", "covered": true}, {"top": "8H", "covered": true}, {"top": "KH", "covered": false} ],
+    [ {"top": "AC", "covered": false}, {"top": "JD", "covered": true}, {"top": "9H", "covered": true}, {"top": "8S", "covered": true} ]
+  ],
+  "current_trick": null,
+  "last_trick": {"leader": 1, "cards": ["8C", "JC"], "winner": 0, "points": 1},
+  "tricks_played": 2,
+  "points": [1, 1],
+  "played": ["9S", "JS", "8C", "JC"],
+  "unknown": ["QC", "9D", "KD", "7H", "AH", "10H", "KS", "9C", "AS", "10D", "QD", "7S", "10S"],
+  "legal_moves": [
+    {"type": "play", "card": "7C"}, {"type": "play", "card": "KC"}, {"type": "play", "card": "10C"},
+    {"type": "play", "card": "8D"}, {"type": "play", "card": "AD"}, {"type": "play", "card": "JH"},
+    {"type": "play", "card": "QH"}, {"type": "play", "card": "7D"}, {"type": "play", "card": "QS"},
+    {"type": "play", "card": "8H"}, {"type": "play", "card": "KH"}
+  ]
+}

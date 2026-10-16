@@ -1,0 +1,14 @@
+{
+  "dealer": 1,
+  "bids": [
+    { "bid": {"type": "trump", "suit": "C"}, "points": [27, 33], "contra": false, "dealer_score": 3 },
+    { "bid": {"type": "trump", "suit": "D"}, "points": [28, 32], "contra": false, "dealer_score": 2 },
+    { "bid": {"type": "trump", "suit": "H"}, "points": [27, 33], "contra": false, "dealer_score": 3 },
+    { "bid": {"type": "trump", "suit": "S"}, "points": [27, 33], "contra": false, "dealer_score": 3 },
+    { "bid": {"type": "no_trump"}, "points": [26, 34], "contra": false, "dealer_score": 8 }
+  ],
+  "best_bid": {"type": "no_trump"},
+  "par_score": 8,
+  "actual": null,
+  "nodes": 1979894
+}

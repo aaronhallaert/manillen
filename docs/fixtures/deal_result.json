@@ -1,0 +1,2 @@
+{ "dealer": 1, "bid": {"type": "no_trump"}, "contra": true, "multiplier": 4,
+  "points": [38, 22], "winner": 0, "base": 8, "score": 32 }
