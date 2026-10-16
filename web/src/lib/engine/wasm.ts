@@ -16,6 +16,11 @@ import type {
 } from './types';
 import type { WorkerRequest, WorkerResponse } from './worker';
 
+/** Deep-copy to plain JSON values (drops proxies, getters, class instances). */
+export function toPlain<T>(v: T): T {
+  return JSON.parse(JSON.stringify(v)) as T;
+}
+
 /** One Web Worker running worker.ts, with promise-based request/response matching. */
 class WorkerChannel {
   private worker: Worker;
@@ -40,7 +45,9 @@ class WorkerChannel {
 
   call<T>(method: string, ...args: unknown[]): Promise<T> {
     const id = this.nextId++;
-    const req: WorkerRequest = { id, method, args };
+    // Svelte `$state` proxies cannot be structured-cloned by postMessage; everything we
+    // send is plain JSON, so a round-trip strips the proxies. Keep this: it has regressed once.
+    const req: WorkerRequest = { id, method, args: toPlain(args) };
     return new Promise<T>((resolve, reject) => {
       this.pending.set(id, { resolve: resolve as (v: unknown) => void, reject });
       this.worker.postMessage(req);
