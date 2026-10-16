@@ -60,6 +60,15 @@ cd web && npm install && npm run dev                           # or: npm run bui
 ```
 
 Open the preview URL on the phone (same network); the app is installable as a PWA.
+
+### Hosting on GitHub Pages
+
+`.github/workflows/pages.yml` runs the tests, builds the wasm package and the site, and deploys
+`web/dist` to GitHub Pages on every push to `main` (or manually via "Run workflow"). One-time
+setup in the repository: **Settings → Pages → Build and deployment → Source: GitHub Actions**
+(the workflow also tries to enable this itself). The site is then served at
+`https://<user>.github.io/manillen/`; the Vite build uses relative paths, so no base-path
+configuration is needed. Install it from the phone browser's "Add to Home Screen".
 Without the wasm pkg the web app falls back to a mock engine (`VITE_ENGINE=mock`).
 
 ## Performance (native, release)

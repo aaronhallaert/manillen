@@ -21,6 +21,8 @@ export default defineConfig({
         name: 'Manillen',
         short_name: 'Manillen',
         description: 'Two-player Manillen against an engine, with post-game review.',
+        start_url: './',
+        scope: './',
         display: 'standalone',
         orientation: 'portrait',
         theme_color: '#1f5f3a',
