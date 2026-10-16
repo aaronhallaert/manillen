@@ -61,8 +61,6 @@ jobs:
       - name: Verify the wasm engine is bundled (not the mock stub)
         run: ls web/dist/assets/*.wasm
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web/dist
